@@ -7,6 +7,7 @@ URL:		http://www.ctan.org/tex-archive/macros/context/current
 License:	OTHER-FREE
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.doc.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.x86_64-linux.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(post):	texlive-tlpkg
@@ -27,7 +28,7 @@ Conflicts:	texlive-texmf-contex <= 2007
 Conflicts:	texlive-texmf <= 20110705-3
 Conflicts:	texlive-doc <= 20110705-3
 Requires(post):	texlive-tetex
-Requires(post):	texlive-context.bin
+Provides:	texlive-context.bin = %{EVRD}
 
 %description
 A full featured, parameter driven macro package, which fully
@@ -60,6 +61,7 @@ for a wealth of support information.
 
 #-----------------------------------------------------------------------
 %files
+%{_bindir}/*
 %{_texmfdistdir}/bibtex/bst/context/cont-ab.bst
 %{_texmfdistdir}/bibtex/bst/context/cont-au.bst
 %{_texmfdistdir}/bibtex/bst/context/cont-no.bst
@@ -2172,11 +2174,14 @@ for a wealth of support information.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%setup -c -a0 -a1 -a2
 
 %build
 
 %install
+# only lua scripts
+mkdir -p %{buildroot}%{_bindir}
+cp -fpa bin/x86_64-linux/* %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
