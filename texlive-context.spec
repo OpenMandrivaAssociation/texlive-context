@@ -1,3 +1,9 @@
+# revision 24174
+# category Package
+# catalog-ctan /macros/context/current
+# catalog-date 2011-08-08 12:26:55 +0200
+# catalog-license other-free
+# catalog-version undef
 Name:		texlive-context
 Version:	20110808
 Release:	1
@@ -19,7 +25,7 @@ Requires:	texlive-lm
 Requires:	texlive-stmaryrd
 Requires:	texlive-amsfonts
 Requires:	texlive-mptopdf
-Requires:	texlive-context.bin
+Provides:	texlive-context.bin = %{EVRD}
 Provides:	texlive-texmf-contex = %{version}
 Obsoletes:	texlive-contex <= 2007
 Conflicts:	texlive-contex <= 2007
@@ -28,7 +34,6 @@ Conflicts:	texlive-texmf-contex <= 2007
 Conflicts:	texlive-texmf <= 20110705-3
 Conflicts:	texlive-doc <= 20110705-3
 Requires(post):	texlive-tetex
-Provides:	texlive-context.bin = %{EVRD}
 
 %description
 A full featured, parameter driven macro package, which fully
@@ -2171,6 +2176,7 @@ for a wealth of support information.
 %doc %{_texmfdir}/doc/man/man1/texexec.man1.pdf
 %doc %{_mandir}/man1/texmfstart.1*
 %doc %{_texmfdir}/doc/man/man1/texmfstart.man1.pdf
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -2186,6 +2192,8 @@ mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
 mkdir -p %{buildroot}%{_texmf_fmtutil_d}
 cat > %{buildroot}%{_texmf_fmtutil_d}/context <<EOF
 cont-en pdftex cont-usr.tex -8bit *cont-en.ini
