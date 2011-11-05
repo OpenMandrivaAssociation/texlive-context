@@ -16,10 +16,11 @@ Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.doc.tar.x
 Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.x86_64-linux.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
-Requires(post):	texlive-tlpkg
+Requires(pre):	texlive-tlpkg
+Requires(post):	texlive-kpathsea
 Requires:	texlive-metapost
-Requires:	texlive-pdftex
-Requires:	texlive-xetex
+Requires(post):	texlive-pdftex
+Requires(post):	texlive-xetex
 Requires:	texlive-luatex
 Requires:	texlive-lm
 Requires:	texlive-stmaryrd
@@ -46,9 +47,8 @@ for a wealth of support information.
     %_texmf_mktexlsr_pre
 
 %post
-    %_texmf_fmtutil_post
-    %_texmf_mtxrun_post
     %_texmf_mktexlsr_post
+    %_texmf_mtxrun_post
 
 %preun
     if [ $1 -eq 0 ]; then
@@ -59,9 +59,8 @@ for a wealth of support information.
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_fmtutil_post
-	%_texmf_mtxrun_post
 	%_texmf_mktexlsr_post
+	%_texmf_mtxrun_post
     fi
 
 #-----------------------------------------------------------------------
