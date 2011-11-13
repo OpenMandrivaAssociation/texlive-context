@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-context
 Version:	20110808
-Release:	1
+Release:	2
 Summary:	The ConTeXt macro package
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/context/current
@@ -27,11 +27,7 @@ Requires:	texlive-stmaryrd
 Requires:	texlive-amsfonts
 Requires:	texlive-mptopdf
 Provides:	texlive-context.bin = %{EVRD}
-Provides:	texlive-texmf-contex = %{version}
-Obsoletes:	texlive-contex <= 2007
-Conflicts:	texlive-contex <= 2007
-Obsoletes:	texlive-texmf-contex <= 2007
-Conflicts:	texlive-texmf-contex <= 2007
+%rename texlive-texmf-contex
 Conflicts:	texlive-texmf <= 20110705-3
 Conflicts:	texlive-doc <= 20110705-3
 Requires(post):	texlive-tetex
