@@ -28,8 +28,6 @@ Requires:	texlive-amsfonts
 Requires:	texlive-mptopdf
 Provides:	texlive-context.bin = %{EVRD}
 %rename texlive-texmf-contex
-Conflicts:	texlive-texmf <= 20110705-3
-Conflicts:	texlive-doc <= 20110705-3
 Requires(post):	texlive-tetex
 
 %description
@@ -37,26 +35,12 @@ A full featured, parameter driven macro package, which fully
 supports advanced interactive documents. See the ConTeXt garden
 for a wealth of support information.
 
-%pre
-    %_texmf_fmtutil_pre
-    %_texmf_mtxrun_pre
-    %_texmf_mktexlsr_pre
-
 %post
-    %_texmf_mktexlsr_post
-    %_texmf_mtxrun_post
-
-%preun
-    if [ $1 -eq 0 ]; then
-	%_texmf_fmtutil_pre
-	%_texmf_mtxrun_pre
-	%_texmf_mktexlsr_pre
-    fi
+    %{_sbindir}/texlive.post
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_post
-	%_texmf_mtxrun_post
+	%{_sbindir}/texlive.post
     fi
 
 #-----------------------------------------------------------------------
@@ -2171,7 +2155,6 @@ for a wealth of support information.
 %doc %{_texmfdir}/doc/man/man1/texexec.man1.pdf
 %doc %{_mandir}/man1/texmfstart.1*
 %doc %{_texmfdir}/doc/man/man1/texmfstart.man1.pdf
-%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -2187,8 +2170,6 @@ mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
-mkdir -p %{buildroot}%{_tlpkgobjdir}
-cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
 mkdir -p %{buildroot}%{_texmf_fmtutil_d}
 cat > %{buildroot}%{_texmf_fmtutil_d}/context <<EOF
 cont-en pdftex cont-usr.tex -8bit *cont-en.ini
