@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-context
 Version:	20110808
-Release:	2
+Release:	3
 Summary:	The ConTeXt macro package
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/context/current
