@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-context
 Version:	20110808
-Release:	3
+Release:	4
 Summary:	The ConTeXt macro package
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/context/current
@@ -18,9 +18,10 @@ BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
+Requires(post):	texlive-tetex
 Requires:	texlive-metapost
-Requires(post):	texlive-pdftex
-Requires(post):	texlive-xetex
+Requires:	texlive-pdftex
+Requires:	texlive-xetex
 Requires:	texlive-luatex
 Requires:	texlive-lm
 Requires:	texlive-stmaryrd
@@ -28,7 +29,6 @@ Requires:	texlive-amsfonts
 Requires:	texlive-mptopdf
 Provides:	texlive-context.bin = %{EVRD}
 %rename texlive-texmf-contex
-Requires(post):	texlive-tetex
 
 %description
 A full featured, parameter driven macro package, which fully
@@ -2172,6 +2172,13 @@ mkdir -p %{buildroot}%{_mandir}/man1
 mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_texmf_fmtutil_d}
 cat > %{buildroot}%{_texmf_fmtutil_d}/context <<EOF
+#
+# from context:
 cont-en pdftex cont-usr.tex -8bit *cont-en.ini
 cont-en xetex cont-usr.tex -8bit *cont-en.ini
+#! cont-de pdftex cont-usr.tex -8bit *cont-de.ini
+#! cont-fr pdftex cont-usr.tex -8bit *cont-fr.ini
+#! cont-it pdftex cont-usr.tex -8bit *cont-it.ini
+#! cont-nl pdftex cont-usr.tex -8bit *cont-nl.ini
+#! cont-ro pdftex cont-usr.tex -8bit *cont-ro.ini
 EOF
