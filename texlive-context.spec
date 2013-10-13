@@ -1,12 +1,12 @@
-# revision 26863
+# revision 31080
 # category Package
 # catalog-ctan /macros/context/current
-# catalog-date 2011-08-08 12:26:55 +0200
+# catalog-date 2013-04-26 00:38:23 +0200
 # catalog-license other-free
 # catalog-version undef
 Name:		texlive-context
-Version:	20110808
-Release:	5
+Version:	20130426
+Release:	1
 Summary:	The ConTeXt macro package
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/context/current
@@ -24,6 +24,7 @@ Requires:	texlive-pdftex
 Requires:	texlive-xetex
 Requires:	texlive-luatex
 Requires:	texlive-lm
+Requires:	texlive-lm-math
 Requires:	texlive-stmaryrd
 Requires:	texlive-amsfonts
 Requires:	texlive-mptopdf
@@ -50,6 +51,7 @@ for a wealth of support information.
 %{_texmfdistdir}/bibtex/bst/context/cont-au.bst
 %{_texmfdistdir}/bibtex/bst/context/cont-no.bst
 %{_texmfdistdir}/bibtex/bst/context/cont-ti.bst
+%{_texmfdistdir}/context/data/scite/lexers/archive/scite-context-lexer-pre-3-3-1.lua
 %{_texmfdistdir}/context/data/scite/lexers/data/scite-context-data-context.lua
 %{_texmfdistdir}/context/data/scite/lexers/data/scite-context-data-interfaces.lua
 %{_texmfdistdir}/context/data/scite/lexers/data/scite-context-data-metafun.lua
@@ -64,8 +66,10 @@ for a wealth of support information.
 %{_texmfdistdir}/context/data/scite/lexers/scite-context-lexer-pdf.lua
 %{_texmfdistdir}/context/data/scite/lexers/scite-context-lexer-tex.lua
 %{_texmfdistdir}/context/data/scite/lexers/scite-context-lexer-txt.lua
+%{_texmfdistdir}/context/data/scite/lexers/scite-context-lexer-web.lua
 %{_texmfdistdir}/context/data/scite/lexers/scite-context-lexer-xml-cdata.lua
 %{_texmfdistdir}/context/data/scite/lexers/scite-context-lexer-xml-comment.lua
+%{_texmfdistdir}/context/data/scite/lexers/scite-context-lexer-xml-script.lua
 %{_texmfdistdir}/context/data/scite/lexers/scite-context-lexer-xml.lua
 %{_texmfdistdir}/context/data/scite/lexers/scite-context-lexer.lua
 %{_texmfdistdir}/context/data/scite/lexers/themes/scite-context-theme-keep.lua
@@ -134,7 +138,6 @@ for a wealth of support information.
 %{_texmfdistdir}/fonts/map/pdftex/context/8r-base.map
 %{_texmfdistdir}/fonts/map/pdftex/context/ec-base.map
 %{_texmfdistdir}/fonts/map/pdftex/context/ec-os-public-lm.map
-%{_texmfdistdir}/fonts/map/pdftex/context/koeieletters.map
 %{_texmfdistdir}/fonts/map/pdftex/context/mkiv-base.map
 %{_texmfdistdir}/fonts/map/pdftex/context/mkiv-px.map
 %{_texmfdistdir}/fonts/map/pdftex/context/mkiv-tx.map
@@ -163,7 +166,7 @@ for a wealth of support information.
 %{_texmfdistdir}/fonts/map/pdftex/context/texnansi-os-public-lm.map
 %{_texmfdistdir}/fonts/misc/xetex/fontmapping/context/tlig.map
 %{_texmfdistdir}/fonts/misc/xetex/fontmapping/context/tlig.tec
-%{_texmfdistdir}/fonts/opentype/context/tests/texmfhome.otf
+%{_texmfdistdir}/fonts/pfm/hoekwater/context/contnav.pfm
 %{_texmfdistdir}/fonts/tfm/hoekwater/context/contnav.tfm
 %{_texmfdistdir}/fonts/type1/hoekwater/context/contnav.pfb
 %{_texmfdistdir}/metapost/context/base/metafun.mp
@@ -190,6 +193,7 @@ for a wealth of support information.
 %{_texmfdistdir}/metapost/context/base/mp-form.mpiv
 %{_texmfdistdir}/metapost/context/base/mp-func.mpii
 %{_texmfdistdir}/metapost/context/base/mp-func.mpiv
+%{_texmfdistdir}/metapost/context/base/mp-grap.mpiv
 %{_texmfdistdir}/metapost/context/base/mp-grid.mpii
 %{_texmfdistdir}/metapost/context/base/mp-grid.mpiv
 %{_texmfdistdir}/metapost/context/base/mp-grph.mpii
@@ -222,19 +226,23 @@ for a wealth of support information.
 %{_texmfdistdir}/scripts/context/lua/mtx-check.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-colors.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-context.lua
+%{_texmfdistdir}/scripts/context/lua/mtx-context.xml
 %{_texmfdistdir}/scripts/context/lua/mtx-convert.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-epub.lua
+%{_texmfdistdir}/scripts/context/lua/mtx-fcd.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-flac.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-fonts.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-grep.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-interface.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-metapost.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-metatex.lua
+%{_texmfdistdir}/scripts/context/lua/mtx-mk-help.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-modules.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-mtxworks.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-package.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-patterns.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-pdf.lua
+%{_texmfdistdir}/scripts/context/lua/mtx-plain.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-profile.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-rsync.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-scite.lua
@@ -248,6 +256,7 @@ for a wealth of support information.
 %{_texmfdistdir}/scripts/context/lua/mtx-unzip.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-update.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-watch.lua
+%{_texmfdistdir}/scripts/context/lua/mtxlibs.lua
 %{_texmfdistdir}/scripts/context/lua/mtxrun.lua
 %{_texmfdistdir}/scripts/context/perl/makempy.pl
 %{_texmfdistdir}/scripts/context/perl/path_tre.pm
@@ -278,12 +287,10 @@ for a wealth of support information.
 %{_texmfdistdir}/scripts/context/ruby/base/variables.rb
 %{_texmfdistdir}/scripts/context/ruby/concheck.rb
 %{_texmfdistdir}/scripts/context/ruby/ctxtools.rb
-%{_texmfdistdir}/scripts/context/ruby/fcd_start.rb
 %{_texmfdistdir}/scripts/context/ruby/graphics/gs.rb
 %{_texmfdistdir}/scripts/context/ruby/graphics/inkscape.rb
 %{_texmfdistdir}/scripts/context/ruby/graphics/magick.rb
 %{_texmfdistdir}/scripts/context/ruby/imgtopdf.rb
-%{_texmfdistdir}/scripts/context/ruby/mpstools.rb
 %{_texmfdistdir}/scripts/context/ruby/pdftools.rb
 %{_texmfdistdir}/scripts/context/ruby/pstopdf.rb
 %{_texmfdistdir}/scripts/context/ruby/rlxtools.rb
@@ -293,30 +300,33 @@ for a wealth of support information.
 %{_texmfdistdir}/scripts/context/ruby/runtools.rb
 %{_texmfdistdir}/scripts/context/ruby/texexec.rb
 %{_texmfdistdir}/scripts/context/ruby/texmfstart.rb
-%{_texmfdistdir}/scripts/context/ruby/texsync.rb
 %{_texmfdistdir}/scripts/context/ruby/textools.rb
 %{_texmfdistdir}/scripts/context/ruby/texutil.rb
 %{_texmfdistdir}/scripts/context/ruby/tmftools.rb
 %{_texmfdistdir}/scripts/context/ruby/xmltools.rb
 %{_texmfdistdir}/scripts/context/stubs/mswin/context.exe
+%{_texmfdistdir}/scripts/context/stubs/mswin/ctxtools.exe
 %{_texmfdistdir}/scripts/context/stubs/mswin/luatools.exe
 %{_texmfdistdir}/scripts/context/stubs/mswin/metatex.exe
-%{_texmfdistdir}/scripts/context/stubs/mswin/mptopdf.exe
 %{_texmfdistdir}/scripts/context/stubs/mswin/mtxrun.dll
 %{_texmfdistdir}/scripts/context/stubs/mswin/mtxrun.exe
 %{_texmfdistdir}/scripts/context/stubs/mswin/mtxrun.lua
 %{_texmfdistdir}/scripts/context/stubs/mswin/mtxworks.exe
+%{_texmfdistdir}/scripts/context/stubs/mswin/pstopdf.exe
+%{_texmfdistdir}/scripts/context/stubs/mswin/setuptex.bat
 %{_texmfdistdir}/scripts/context/stubs/mswin/texexec.exe
 %{_texmfdistdir}/scripts/context/stubs/mswin/texmfstart.exe
 %{_texmfdistdir}/scripts/context/stubs/source/mtxrun_dll.c
 %{_texmfdistdir}/scripts/context/stubs/source/mtxrun_exe.c
 %{_texmfdistdir}/scripts/context/stubs/source/readme.txt
 %{_texmfdistdir}/scripts/context/stubs/unix/context
+%{_texmfdistdir}/scripts/context/stubs/unix/ctxtools
 %{_texmfdistdir}/scripts/context/stubs/unix/luatools
 %{_texmfdistdir}/scripts/context/stubs/unix/metatex
 %{_texmfdistdir}/scripts/context/stubs/unix/mptopdf
 %{_texmfdistdir}/scripts/context/stubs/unix/mtxrun
 %{_texmfdistdir}/scripts/context/stubs/unix/mtxworks
+%{_texmfdistdir}/scripts/context/stubs/unix/pstopdf
 %{_texmfdistdir}/scripts/context/stubs/unix/texexec
 %{_texmfdistdir}/scripts/context/stubs/unix/texmfstart
 %{_texmfdistdir}/tex/context/base/anch-bar.mkii
@@ -339,6 +349,8 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/attr-ini.mkiv
 %{_texmfdistdir}/tex/context/base/attr-lay.lua
 %{_texmfdistdir}/tex/context/base/attr-lay.mkiv
+%{_texmfdistdir}/tex/context/base/attr-mkr.lua
+%{_texmfdistdir}/tex/context/base/attr-mkr.mkiv
 %{_texmfdistdir}/tex/context/base/attr-neg.lua
 %{_texmfdistdir}/tex/context/base/attr-neg.mkiv
 %{_texmfdistdir}/tex/context/base/back-exp.lua
@@ -377,7 +389,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/buff-ini.mkii
 %{_texmfdistdir}/tex/context/base/buff-ini.mkiv
 %{_texmfdistdir}/tex/context/base/buff-par.lua
-%{_texmfdistdir}/tex/context/base/buff-par.mkiv
+%{_texmfdistdir}/tex/context/base/buff-par.mkvi
 %{_texmfdistdir}/tex/context/base/buff-ver.lua
 %{_texmfdistdir}/tex/context/base/buff-ver.mkii
 %{_texmfdistdir}/tex/context/base/buff-ver.mkiv
@@ -419,6 +431,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/cldf-ini.mkiv
 %{_texmfdistdir}/tex/context/base/cldf-int.lua
 %{_texmfdistdir}/tex/context/base/cldf-int.mkiv
+%{_texmfdistdir}/tex/context/base/cldf-prs.lua
 %{_texmfdistdir}/tex/context/base/cldf-ver.lua
 %{_texmfdistdir}/tex/context/base/cldf-ver.mkiv
 %{_texmfdistdir}/tex/context/base/colo-ema.mkii
@@ -460,12 +473,15 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/cont-log.mkiv
 %{_texmfdistdir}/tex/context/base/cont-new.mkii
 %{_texmfdistdir}/tex/context/base/cont-new.mkiv
+%{_texmfdistdir}/tex/context/base/cont-new.tmp
 %{_texmfdistdir}/tex/context/base/cont-nl.mkii
 %{_texmfdistdir}/tex/context/base/cont-nl.mkiv
+%{_texmfdistdir}/tex/context/base/cont-nop.mkiv
 %{_texmfdistdir}/tex/context/base/cont-pe.mkiv
 %{_texmfdistdir}/tex/context/base/cont-ro.mkii
 %{_texmfdistdir}/tex/context/base/cont-ro.mkiv
 %{_texmfdistdir}/tex/context/base/cont-sys.ori
+%{_texmfdistdir}/tex/context/base/cont-yes.mkiv
 %{_texmfdistdir}/tex/context/base/context-base.lmx
 %{_texmfdistdir}/tex/context/base/context-characters.lmx
 %{_texmfdistdir}/tex/context/base/context-debug.lmx
@@ -480,10 +496,11 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/context.mkii
 %{_texmfdistdir}/tex/context/base/context.mkiv
 %{_texmfdistdir}/tex/context/base/context.rme
-%{_texmfdistdir}/tex/context/base/context.todo
+%{_texmfdistdir}/tex/context/base/context.tmp
 %{_texmfdistdir}/tex/context/base/core-con.lua
 %{_texmfdistdir}/tex/context/base/core-con.mkii
 %{_texmfdistdir}/tex/context/base/core-con.mkiv
+%{_texmfdistdir}/tex/context/base/core-ctx.ctx
 %{_texmfdistdir}/tex/context/base/core-ctx.lua
 %{_texmfdistdir}/tex/context/base/core-ctx.mkii
 %{_texmfdistdir}/tex/context/base/core-ctx.mkiv
@@ -496,13 +513,11 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/core-env.mkiv
 %{_texmfdistdir}/tex/context/base/core-fil.mkii
 %{_texmfdistdir}/tex/context/base/core-fnt.mkii
-%{_texmfdistdir}/tex/context/base/core-fnt.mkiv
 %{_texmfdistdir}/tex/context/base/core-gen.mkii
 %{_texmfdistdir}/tex/context/base/core-ini.mkii
 %{_texmfdistdir}/tex/context/base/core-ini.mkiv
 %{_texmfdistdir}/tex/context/base/core-job.mkii
 %{_texmfdistdir}/tex/context/base/core-mis.mkii
-%{_texmfdistdir}/tex/context/base/core-mis.mkiv
 %{_texmfdistdir}/tex/context/base/core-par.mkii
 %{_texmfdistdir}/tex/context/base/core-stg.mkii
 %{_texmfdistdir}/tex/context/base/core-sys.lua
@@ -515,7 +530,6 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/core-uti.mkii
 %{_texmfdistdir}/tex/context/base/core-uti.mkiv
 %{_texmfdistdir}/tex/context/base/core-var.mkii
-%{_texmfdistdir}/tex/context/base/core-var.mkiv
 %{_texmfdistdir}/tex/context/base/data-aux.lua
 %{_texmfdistdir}/tex/context/base/data-bin.lua
 %{_texmfdistdir}/tex/context/base/data-con.lua
@@ -598,14 +612,17 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/file-syn.mkvi
 %{_texmfdistdir}/tex/context/base/filt-bas.mkii
 %{_texmfdistdir}/tex/context/base/filt-ini.mkii
+%{_texmfdistdir}/tex/context/base/font-afk.lua
 %{_texmfdistdir}/tex/context/base/font-afm.lua
 %{_texmfdistdir}/tex/context/base/font-age.lua
 %{_texmfdistdir}/tex/context/base/font-agl.lua
 %{_texmfdistdir}/tex/context/base/font-arb.mkii
 %{_texmfdistdir}/tex/context/base/font-aux.lua
+%{_texmfdistdir}/tex/context/base/font-aux.mkvi
 %{_texmfdistdir}/tex/context/base/font-bfm.mkii
 %{_texmfdistdir}/tex/context/base/font-chi.mkii
 %{_texmfdistdir}/tex/context/base/font-chk.lua
+%{_texmfdistdir}/tex/context/base/font-chk.mkiv
 %{_texmfdistdir}/tex/context/base/font-cid.lua
 %{_texmfdistdir}/tex/context/base/font-col.lua
 %{_texmfdistdir}/tex/context/base/font-col.mkvi
@@ -620,8 +637,9 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/font-fea.mkvi
 %{_texmfdistdir}/tex/context/base/font-fil.mkvi
 %{_texmfdistdir}/tex/context/base/font-gds.lua
-%{_texmfdistdir}/tex/context/base/font-gds.mkiv
+%{_texmfdistdir}/tex/context/base/font-gds.mkvi
 %{_texmfdistdir}/tex/context/base/font-heb.mkii
+%{_texmfdistdir}/tex/context/base/font-hsh.lua
 %{_texmfdistdir}/tex/context/base/font-ini.lua
 %{_texmfdistdir}/tex/context/base/font-ini.mkii
 %{_texmfdistdir}/tex/context/base/font-ini.mkvi
@@ -633,6 +651,9 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/font-map.lua
 %{_texmfdistdir}/tex/context/base/font-mat.mkvi
 %{_texmfdistdir}/tex/context/base/font-mis.lua
+%{_texmfdistdir}/tex/context/base/font-nod.lua
+%{_texmfdistdir}/tex/context/base/font-odk.lua
+%{_texmfdistdir}/tex/context/base/font-odv.lua
 %{_texmfdistdir}/tex/context/base/font-ota.lua
 %{_texmfdistdir}/tex/context/base/font-otb.lua
 %{_texmfdistdir}/tex/context/base/font-otc.lua
@@ -643,16 +664,20 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/font-otn.lua
 %{_texmfdistdir}/tex/context/base/font-otp.lua
 %{_texmfdistdir}/tex/context/base/font-ott.lua
+%{_texmfdistdir}/tex/context/base/font-otx.lua
 %{_texmfdistdir}/tex/context/base/font-pat.lua
 %{_texmfdistdir}/tex/context/base/font-pre.mkiv
 %{_texmfdistdir}/tex/context/base/font-run.mkii
 %{_texmfdistdir}/tex/context/base/font-run.mkiv
 %{_texmfdistdir}/tex/context/base/font-set.mkvi
+%{_texmfdistdir}/tex/context/base/font-sol.lua
+%{_texmfdistdir}/tex/context/base/font-sol.mkvi
 %{_texmfdistdir}/tex/context/base/font-sty.mkvi
 %{_texmfdistdir}/tex/context/base/font-sym.mkvi
 %{_texmfdistdir}/tex/context/base/font-syn.lua
 %{_texmfdistdir}/tex/context/base/font-tfm.lua
 %{_texmfdistdir}/tex/context/base/font-tra.mkiv
+%{_texmfdistdir}/tex/context/base/font-trt.lua
 %{_texmfdistdir}/tex/context/base/font-uni.mkii
 %{_texmfdistdir}/tex/context/base/font-uni.mkiv
 %{_texmfdistdir}/tex/context/base/font-unk.mkii
@@ -694,12 +719,16 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/l-boolean.lua
 %{_texmfdistdir}/tex/context/base/l-dir.lua
 %{_texmfdistdir}/tex/context/base/l-file.lua
+%{_texmfdistdir}/tex/context/base/l-function.lua
+%{_texmfdistdir}/tex/context/base/l-gzip.lua
 %{_texmfdistdir}/tex/context/base/l-io.lua
 %{_texmfdistdir}/tex/context/base/l-lpeg.lua
+%{_texmfdistdir}/tex/context/base/l-lua.lua
 %{_texmfdistdir}/tex/context/base/l-math.lua
 %{_texmfdistdir}/tex/context/base/l-md5.lua
 %{_texmfdistdir}/tex/context/base/l-number.lua
 %{_texmfdistdir}/tex/context/base/l-os.lua
+%{_texmfdistdir}/tex/context/base/l-package.lua
 %{_texmfdistdir}/tex/context/base/l-pdfview.lua
 %{_texmfdistdir}/tex/context/base/l-set.lua
 %{_texmfdistdir}/tex/context/base/l-string.lua
@@ -720,7 +749,12 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/lang-def.mkiv
 %{_texmfdistdir}/tex/context/base/lang-dis.mkii
 %{_texmfdistdir}/tex/context/base/lang-frd.mkii
+%{_texmfdistdir}/tex/context/base/lang-frd.mkiv
+%{_texmfdistdir}/tex/context/base/lang-frq-de.lua
+%{_texmfdistdir}/tex/context/base/lang-frq-en.lua
+%{_texmfdistdir}/tex/context/base/lang-frq-nl.lua
 %{_texmfdistdir}/tex/context/base/lang-frq.mkii
+%{_texmfdistdir}/tex/context/base/lang-frq.mkiv
 %{_texmfdistdir}/tex/context/base/lang-ger.mkii
 %{_texmfdistdir}/tex/context/base/lang-grk.mkii
 %{_texmfdistdir}/tex/context/base/lang-ind.mkii
@@ -825,6 +859,8 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/m-format.tex
 %{_texmfdistdir}/tex/context/base/m-graph.mkii
 %{_texmfdistdir}/tex/context/base/m-graph.mkiv
+%{_texmfdistdir}/tex/context/base/m-ipsum.mkiv
+%{_texmfdistdir}/tex/context/base/m-json.mkiv
 %{_texmfdistdir}/tex/context/base/m-layout.tex
 %{_texmfdistdir}/tex/context/base/m-level.mkii
 %{_texmfdistdir}/tex/context/base/m-logcategories.mkiv
@@ -836,9 +872,12 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/m-morse.mkvi
 %{_texmfdistdir}/tex/context/base/m-narrowtt.tex
 %{_texmfdistdir}/tex/context/base/m-newmat.tex
+%{_texmfdistdir}/tex/context/base/m-nodechart.mkvi
 %{_texmfdistdir}/tex/context/base/m-ntb-to-xtb.mkiv
 %{_texmfdistdir}/tex/context/base/m-obsolete.mkii
 %{_texmfdistdir}/tex/context/base/m-obsolete.mkiv
+%{_texmfdistdir}/tex/context/base/m-oldfun.mkiv
+%{_texmfdistdir}/tex/context/base/m-oldnum.mkiv
 %{_texmfdistdir}/tex/context/base/m-pdfsnc.mkii
 %{_texmfdistdir}/tex/context/base/m-pictex.tex
 %{_texmfdistdir}/tex/context/base/m-pstricks.lua
@@ -846,7 +885,9 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/m-pstricks.mkiv
 %{_texmfdistdir}/tex/context/base/m-punk.mkiv
 %{_texmfdistdir}/tex/context/base/m-r.tex
+%{_texmfdistdir}/tex/context/base/m-spreadsheet.lua
 %{_texmfdistdir}/tex/context/base/m-spreadsheet.mkiv
+%{_texmfdistdir}/tex/context/base/m-sql.mkiv
 %{_texmfdistdir}/tex/context/base/m-steps.lua
 %{_texmfdistdir}/tex/context/base/m-steps.mkii
 %{_texmfdistdir}/tex/context/base/m-steps.mkvi
@@ -873,8 +914,11 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/math-dis.mkiv
 %{_texmfdistdir}/tex/context/base/math-eul.mkii
 %{_texmfdistdir}/tex/context/base/math-ext.lua
+%{_texmfdistdir}/tex/context/base/math-fbk.lua
+%{_texmfdistdir}/tex/context/base/math-fen.mkiv
 %{_texmfdistdir}/tex/context/base/math-for.mkiv
 %{_texmfdistdir}/tex/context/base/math-fou.mkii
+%{_texmfdistdir}/tex/context/base/math-frc.lua
 %{_texmfdistdir}/tex/context/base/math-frc.mkii
 %{_texmfdistdir}/tex/context/base/math-frc.mkiv
 %{_texmfdistdir}/tex/context/base/math-ini.lua
@@ -884,15 +928,18 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/math-int.mkiv
 %{_texmfdistdir}/tex/context/base/math-lbr.mkii
 %{_texmfdistdir}/tex/context/base/math-map.lua
+%{_texmfdistdir}/tex/context/base/math-mis.mkiv
 %{_texmfdistdir}/tex/context/base/math-noa.lua
 %{_texmfdistdir}/tex/context/base/math-pln.mkii
 %{_texmfdistdir}/tex/context/base/math-pln.mkiv
 %{_texmfdistdir}/tex/context/base/math-ren.lua
 %{_texmfdistdir}/tex/context/base/math-run.mkii
 %{_texmfdistdir}/tex/context/base/math-scr.mkiv
+%{_texmfdistdir}/tex/context/base/math-stc.mkvi
 %{_texmfdistdir}/tex/context/base/math-tag.lua
 %{_texmfdistdir}/tex/context/base/math-tex.mkii
 %{_texmfdistdir}/tex/context/base/math-tim.mkii
+%{_texmfdistdir}/tex/context/base/math-ttv.lua
 %{_texmfdistdir}/tex/context/base/math-uni.mkii
 %{_texmfdistdir}/tex/context/base/math-vfu.lua
 %{_texmfdistdir}/tex/context/base/meta-clp.mkii
@@ -901,6 +948,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/meta-fig.mkiv
 %{_texmfdistdir}/tex/context/base/meta-fun.lua
 %{_texmfdistdir}/tex/context/base/meta-fun.mkiv
+%{_texmfdistdir}/tex/context/base/meta-grd.mkiv
 %{_texmfdistdir}/tex/context/base/meta-imp-clp.mkiv
 %{_texmfdistdir}/tex/context/base/meta-imp-dum.mkiv
 %{_texmfdistdir}/tex/context/base/meta-imp-fen.mkiv
@@ -939,10 +987,12 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/mtx-context-arrange.tex
 %{_texmfdistdir}/tex/context/base/mtx-context-combine.tex
 %{_texmfdistdir}/tex/context/base/mtx-context-common.tex
+%{_texmfdistdir}/tex/context/base/mtx-context-copy.tex
 %{_texmfdistdir}/tex/context/base/mtx-context-ideas.tex
 %{_texmfdistdir}/tex/context/base/mtx-context-listing.tex
 %{_texmfdistdir}/tex/context/base/mtx-context-markdown.tex
 %{_texmfdistdir}/tex/context/base/mtx-context-select.tex
+%{_texmfdistdir}/tex/context/base/mtx-context-sql.tex
 %{_texmfdistdir}/tex/context/base/mtx-context-timing.tex
 %{_texmfdistdir}/tex/context/base/mult-aux.lua
 %{_texmfdistdir}/tex/context/base/mult-aux.mkii
@@ -960,6 +1010,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/mult-en.mkii
 %{_texmfdistdir}/tex/context/base/mult-fr.mkii
 %{_texmfdistdir}/tex/context/base/mult-fst.mkii
+%{_texmfdistdir}/tex/context/base/mult-fun.lua
 %{_texmfdistdir}/tex/context/base/mult-ini.lua
 %{_texmfdistdir}/tex/context/base/mult-ini.mkii
 %{_texmfdistdir}/tex/context/base/mult-ini.mkiv
@@ -999,8 +1050,6 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/node-mig.mkiv
 %{_texmfdistdir}/tex/context/base/node-pag.lua
 %{_texmfdistdir}/tex/context/base/node-pag.mkiv
-%{_texmfdistdir}/tex/context/base/node-par.lua
-%{_texmfdistdir}/tex/context/base/node-par.mkiv
 %{_texmfdistdir}/tex/context/base/node-pro.lua
 %{_texmfdistdir}/tex/context/base/node-ref.lua
 %{_texmfdistdir}/tex/context/base/node-res.lua
@@ -1008,8 +1057,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/node-rul.mkiv
 %{_texmfdistdir}/tex/context/base/node-ser.lua
 %{_texmfdistdir}/tex/context/base/node-shp.lua
-%{_texmfdistdir}/tex/context/base/node-spl.lua
-%{_texmfdistdir}/tex/context/base/node-spl.mkiv
+%{_texmfdistdir}/tex/context/base/node-snp.lua
 %{_texmfdistdir}/tex/context/base/node-tex.lua
 %{_texmfdistdir}/tex/context/base/node-tra.lua
 %{_texmfdistdir}/tex/context/base/node-tsk.lua
@@ -1028,6 +1076,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/pack-box.mkii
 %{_texmfdistdir}/tex/context/base/pack-box.mkiv
 %{_texmfdistdir}/tex/context/base/pack-com.mkiv
+%{_texmfdistdir}/tex/context/base/pack-cut.mkiv
 %{_texmfdistdir}/tex/context/base/pack-fen.mkiv
 %{_texmfdistdir}/tex/context/base/pack-lyr.mkii
 %{_texmfdistdir}/tex/context/base/pack-lyr.mkiv
@@ -1059,6 +1108,9 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/page-inf.mkiv
 %{_texmfdistdir}/tex/context/base/page-ini.mkii
 %{_texmfdistdir}/tex/context/base/page-ini.mkiv
+%{_texmfdistdir}/tex/context/base/page-inj.lua
+%{_texmfdistdir}/tex/context/base/page-inj.mkvi
+%{_texmfdistdir}/tex/context/base/page-ins.lua
 %{_texmfdistdir}/tex/context/base/page-ins.mkii
 %{_texmfdistdir}/tex/context/base/page-ins.mkiv
 %{_texmfdistdir}/tex/context/base/page-lay.mkii
@@ -1071,9 +1123,9 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/page-mak.mkvi
 %{_texmfdistdir}/tex/context/base/page-mar.mkii
 %{_texmfdistdir}/tex/context/base/page-mbk.mkvi
-%{_texmfdistdir}/tex/context/base/page-mis.lua
 %{_texmfdistdir}/tex/context/base/page-mis.mkii
-%{_texmfdistdir}/tex/context/base/page-mis.mkiv
+%{_texmfdistdir}/tex/context/base/page-mix.lua
+%{_texmfdistdir}/tex/context/base/page-mix.mkiv
 %{_texmfdistdir}/tex/context/base/page-mrk.mkiv
 %{_texmfdistdir}/tex/context/base/page-mul.mkii
 %{_texmfdistdir}/tex/context/base/page-mul.mkiv
@@ -1086,9 +1138,11 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/page-par.mkiv
 %{_texmfdistdir}/tex/context/base/page-plg.mkii
 %{_texmfdistdir}/tex/context/base/page-plg.mkiv
+%{_texmfdistdir}/tex/context/base/page-pst.lua
+%{_texmfdistdir}/tex/context/base/page-pst.mkiv
 %{_texmfdistdir}/tex/context/base/page-run.mkii
 %{_texmfdistdir}/tex/context/base/page-run.mkiv
-%{_texmfdistdir}/tex/context/base/page-sel.mkiv
+%{_texmfdistdir}/tex/context/base/page-sel.mkvi
 %{_texmfdistdir}/tex/context/base/page-set.mkii
 %{_texmfdistdir}/tex/context/base/page-set.mkiv
 %{_texmfdistdir}/tex/context/base/page-sid.mkii
@@ -1183,34 +1237,52 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/s-fnt-01.mkii
 %{_texmfdistdir}/tex/context/base/s-fnt-02.mkii
 %{_texmfdistdir}/tex/context/base/s-fnt-10.mkiv
-%{_texmfdistdir}/tex/context/base/s-fnt-11.mkiv
 %{_texmfdistdir}/tex/context/base/s-fnt-20.mkiv
 %{_texmfdistdir}/tex/context/base/s-fnt-21.mkiv
-%{_texmfdistdir}/tex/context/base/s-fnt-23.mkiv
 %{_texmfdistdir}/tex/context/base/s-fnt-24.mkiv
-%{_texmfdistdir}/tex/context/base/s-fnt-26.mkiv
-%{_texmfdistdir}/tex/context/base/s-fnt-28.mkiv
-%{_texmfdistdir}/tex/context/base/s-fnt-29.mkiv
-%{_texmfdistdir}/tex/context/base/s-fnt-30.mkiv
-%{_texmfdistdir}/tex/context/base/s-fnt-31.mkiv
-%{_texmfdistdir}/tex/context/base/s-fnt-32.mkiv
+%{_texmfdistdir}/tex/context/base/s-fonts-coverage.lua
+%{_texmfdistdir}/tex/context/base/s-fonts-coverage.mkiv
+%{_texmfdistdir}/tex/context/base/s-fonts-features.lua
+%{_texmfdistdir}/tex/context/base/s-fonts-features.mkiv
+%{_texmfdistdir}/tex/context/base/s-fonts-goodies.lua
+%{_texmfdistdir}/tex/context/base/s-fonts-goodies.mkiv
+%{_texmfdistdir}/tex/context/base/s-fonts-missing.lua
 %{_texmfdistdir}/tex/context/base/s-fonts-missing.mkiv
+%{_texmfdistdir}/tex/context/base/s-fonts-shapes.lua
+%{_texmfdistdir}/tex/context/base/s-fonts-shapes.mkiv
+%{_texmfdistdir}/tex/context/base/s-fonts-system.lua
+%{_texmfdistdir}/tex/context/base/s-fonts-system.mkiv
 %{_texmfdistdir}/tex/context/base/s-fonts-tables.lua
 %{_texmfdistdir}/tex/context/base/s-fonts-tables.mkiv
+%{_texmfdistdir}/tex/context/base/s-fonts-vectors.lua
+%{_texmfdistdir}/tex/context/base/s-fonts-vectors.mkiv
 %{_texmfdistdir}/tex/context/base/s-grk-00.mkii
 %{_texmfdistdir}/tex/context/base/s-inf-01.mkvi
 %{_texmfdistdir}/tex/context/base/s-inf-02.mkiv
 %{_texmfdistdir}/tex/context/base/s-inf-03.mkiv
 %{_texmfdistdir}/tex/context/base/s-inf-04.mkiv
 %{_texmfdistdir}/tex/context/base/s-jap-00.mkii
-%{_texmfdistdir}/tex/context/base/s-lan-03.mkiv
-%{_texmfdistdir}/tex/context/base/s-lan-04.mkiv
+%{_texmfdistdir}/tex/context/base/s-languages-counters.lua
+%{_texmfdistdir}/tex/context/base/s-languages-counters.mkiv
+%{_texmfdistdir}/tex/context/base/s-languages-frequencies.lua
+%{_texmfdistdir}/tex/context/base/s-languages-frequencies.mkiv
+%{_texmfdistdir}/tex/context/base/s-languages-hyphenation.lua
+%{_texmfdistdir}/tex/context/base/s-languages-hyphenation.mkiv
+%{_texmfdistdir}/tex/context/base/s-languages-sorting.lua
+%{_texmfdistdir}/tex/context/base/s-languages-sorting.mkiv
+%{_texmfdistdir}/tex/context/base/s-languages-system.lua
+%{_texmfdistdir}/tex/context/base/s-languages-system.mkiv
 %{_texmfdistdir}/tex/context/base/s-mag-01.tex
 %{_texmfdistdir}/tex/context/base/s-map-10.mkii
 %{_texmfdistdir}/tex/context/base/s-map-10.mkiv
-%{_texmfdistdir}/tex/context/base/s-mat-10.mkiv
-%{_texmfdistdir}/tex/context/base/s-mat-11.mkiv
-%{_texmfdistdir}/tex/context/base/s-mat-12.mkiv
+%{_texmfdistdir}/tex/context/base/s-math-characters.lua
+%{_texmfdistdir}/tex/context/base/s-math-characters.mkiv
+%{_texmfdistdir}/tex/context/base/s-math-coverage.lua
+%{_texmfdistdir}/tex/context/base/s-math-coverage.mkiv
+%{_texmfdistdir}/tex/context/base/s-math-extensibles.mkiv
+%{_texmfdistdir}/tex/context/base/s-math-parameters.lua
+%{_texmfdistdir}/tex/context/base/s-math-parameters.mkiv
+%{_texmfdistdir}/tex/context/base/s-math-repertoire.mkiv
 %{_texmfdistdir}/tex/context/base/s-mod-00.mkii
 %{_texmfdistdir}/tex/context/base/s-mod-00.mkiv
 %{_texmfdistdir}/tex/context/base/s-mod-01.mkii
@@ -1218,7 +1290,8 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/s-mod-02.mkii
 %{_texmfdistdir}/tex/context/base/s-mod-02.mkiv
 %{_texmfdistdir}/tex/context/base/s-mod.ctx
-%{_texmfdistdir}/tex/context/base/s-phy-01.mkiv
+%{_texmfdistdir}/tex/context/base/s-pages-statistics.mkiv
+%{_texmfdistdir}/tex/context/base/s-physics-units.mkiv
 %{_texmfdistdir}/tex/context/base/s-pre-00.tex
 %{_texmfdistdir}/tex/context/base/s-pre-01.tex
 %{_texmfdistdir}/tex/context/base/s-pre-02.tex
@@ -1236,7 +1309,8 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/s-pre-14.tex
 %{_texmfdistdir}/tex/context/base/s-pre-15.tex
 %{_texmfdistdir}/tex/context/base/s-pre-16.tex
-%{_texmfdistdir}/tex/context/base/s-pre-17.tex
+%{_texmfdistdir}/tex/context/base/s-pre-17.mkii
+%{_texmfdistdir}/tex/context/base/s-pre-17.mkiv
 %{_texmfdistdir}/tex/context/base/s-pre-18.tex
 %{_texmfdistdir}/tex/context/base/s-pre-19.tex
 %{_texmfdistdir}/tex/context/base/s-pre-22.tex
@@ -1262,9 +1336,12 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/s-pre-71.mkiv
 %{_texmfdistdir}/tex/context/base/s-pre-93.tex
 %{_texmfdistdir}/tex/context/base/s-pre-96.tex
+%{_texmfdistdir}/tex/context/base/s-present-tiles.mkiv
 %{_texmfdistdir}/tex/context/base/s-ptj-01.tex
 %{_texmfdistdir}/tex/context/base/s-reg-01.mkiv
 %{_texmfdistdir}/tex/context/base/s-set-31.mkiv
+%{_texmfdistdir}/tex/context/base/s-sql-tables.lua
+%{_texmfdistdir}/tex/context/base/s-sql-tables.mkiv
 %{_texmfdistdir}/tex/context/base/s-syn-01.tex
 %{_texmfdistdir}/tex/context/base/scrn-bar.mkvi
 %{_texmfdistdir}/tex/context/base/scrn-but.lua
@@ -1299,9 +1376,11 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/spac-adj.mkiv
 %{_texmfdistdir}/tex/context/base/spac-ali.lua
 %{_texmfdistdir}/tex/context/base/spac-ali.mkiv
+%{_texmfdistdir}/tex/context/base/spac-cha.mkiv
 %{_texmfdistdir}/tex/context/base/spac-chr.lua
 %{_texmfdistdir}/tex/context/base/spac-chr.mkiv
 %{_texmfdistdir}/tex/context/base/spac-def.mkiv
+%{_texmfdistdir}/tex/context/base/spac-flr.mkiv
 %{_texmfdistdir}/tex/context/base/spac-gen.mkii
 %{_texmfdistdir}/tex/context/base/spac-grd.mkii
 %{_texmfdistdir}/tex/context/base/spac-grd.mkiv
@@ -1397,7 +1476,6 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/strc-tag.mkiv
 %{_texmfdistdir}/tex/context/base/strc-xml.mkiv
 %{_texmfdistdir}/tex/context/base/supp-ali.mkii
-%{_texmfdistdir}/tex/context/base/supp-ali.mkiv
 %{_texmfdistdir}/tex/context/base/supp-box.lua
 %{_texmfdistdir}/tex/context/base/supp-box.mkii
 %{_texmfdistdir}/tex/context/base/supp-box.mkiv
@@ -1407,7 +1485,6 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/supp-eps.mkii
 %{_texmfdistdir}/tex/context/base/supp-fil.mkii
 %{_texmfdistdir}/tex/context/base/supp-fun.mkii
-%{_texmfdistdir}/tex/context/base/supp-fun.mkiv
 %{_texmfdistdir}/tex/context/base/supp-lat.mkii
 %{_texmfdistdir}/tex/context/base/supp-mat.mkii
 %{_texmfdistdir}/tex/context/base/supp-mat.mkiv
@@ -1416,7 +1493,6 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/supp-mps.mkii
 %{_texmfdistdir}/tex/context/base/supp-mrk.mkii
 %{_texmfdistdir}/tex/context/base/supp-num.mkii
-%{_texmfdistdir}/tex/context/base/supp-num.mkiv
 %{_texmfdistdir}/tex/context/base/supp-pat.mkii
 %{_texmfdistdir}/tex/context/base/supp-pdf.tex
 %{_texmfdistdir}/tex/context/base/supp-ran.lua
@@ -1429,6 +1505,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/symb-cow.mkii
 %{_texmfdistdir}/tex/context/base/symb-eur.mkii
 %{_texmfdistdir}/tex/context/base/symb-glm.mkii
+%{_texmfdistdir}/tex/context/base/symb-imp-cc.mkiv
 %{_texmfdistdir}/tex/context/base/symb-imp-cow.mkiv
 %{_texmfdistdir}/tex/context/base/symb-imp-eur.mkiv
 %{_texmfdistdir}/tex/context/base/symb-imp-jmn.mkiv
@@ -1470,6 +1547,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/tabl-com.mkiv
 %{_texmfdistdir}/tex/context/base/tabl-ltb.mkii
 %{_texmfdistdir}/tex/context/base/tabl-ltb.mkiv
+%{_texmfdistdir}/tex/context/base/tabl-mis.mkiv
 %{_texmfdistdir}/tex/context/base/tabl-ntb.mkii
 %{_texmfdistdir}/tex/context/base/tabl-ntb.mkiv
 %{_texmfdistdir}/tex/context/base/tabl-nte.mkii
@@ -1494,10 +1572,15 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/thrd-trg.mkii
 %{_texmfdistdir}/tex/context/base/toks-ini.lua
 %{_texmfdistdir}/tex/context/base/toks-ini.mkiv
+%{_texmfdistdir}/tex/context/base/trac-ctx.lua
+%{_texmfdistdir}/tex/context/base/trac-ctx.mkiv
 %{_texmfdistdir}/tex/context/base/trac-deb.lua
 %{_texmfdistdir}/tex/context/base/trac-deb.mkiv
+%{_texmfdistdir}/tex/context/base/trac-exp.lua
 %{_texmfdistdir}/tex/context/base/trac-fil.lua
 %{_texmfdistdir}/tex/context/base/trac-inf.lua
+%{_texmfdistdir}/tex/context/base/trac-jus.lua
+%{_texmfdistdir}/tex/context/base/trac-jus.mkiv
 %{_texmfdistdir}/tex/context/base/trac-lmx.lua
 %{_texmfdistdir}/tex/context/base/trac-log.lua
 %{_texmfdistdir}/tex/context/base/trac-pro.lua
@@ -1505,8 +1588,10 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/trac-tex.lua
 %{_texmfdistdir}/tex/context/base/trac-tex.mkiv
 %{_texmfdistdir}/tex/context/base/trac-tim.lua
+%{_texmfdistdir}/tex/context/base/trac-vis.lua
 %{_texmfdistdir}/tex/context/base/trac-vis.mkii
 %{_texmfdistdir}/tex/context/base/trac-vis.mkiv
+%{_texmfdistdir}/tex/context/base/trac-xml.lua
 %{_texmfdistdir}/tex/context/base/type-buy.mkii
 %{_texmfdistdir}/tex/context/base/type-cbg.mkii
 %{_texmfdistdir}/tex/context/base/type-cow.mkii
@@ -1546,6 +1631,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/type-imp-mathdesign.mkiv
 %{_texmfdistdir}/tex/context/base/type-imp-mathtimes.mkiv
 %{_texmfdistdir}/tex/context/base/type-imp-mscore.mkiv
+%{_texmfdistdir}/tex/context/base/type-imp-opendyslexic.mkiv
 %{_texmfdistdir}/tex/context/base/type-imp-osx.mkiv
 %{_texmfdistdir}/tex/context/base/type-imp-postscript.mkiv
 %{_texmfdistdir}/tex/context/base/type-imp-punknova.mkiv
@@ -1574,6 +1660,8 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/type-tmf.mkiv
 %{_texmfdistdir}/tex/context/base/type-win.mkii
 %{_texmfdistdir}/tex/context/base/type-xtx.mkii
+%{_texmfdistdir}/tex/context/base/typo-bld.lua
+%{_texmfdistdir}/tex/context/base/typo-bld.mkiv
 %{_texmfdistdir}/tex/context/base/typo-brk.lua
 %{_texmfdistdir}/tex/context/base/typo-brk.mkiv
 %{_texmfdistdir}/tex/context/base/typo-cap.lua
@@ -1590,8 +1678,11 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/typo-ini.mkiv
 %{_texmfdistdir}/tex/context/base/typo-itc.lua
 %{_texmfdistdir}/tex/context/base/typo-itc.mkvi
+%{_texmfdistdir}/tex/context/base/typo-itm.mkiv
 %{_texmfdistdir}/tex/context/base/typo-krn.lua
 %{_texmfdistdir}/tex/context/base/typo-krn.mkiv
+%{_texmfdistdir}/tex/context/base/typo-lan.lua
+%{_texmfdistdir}/tex/context/base/typo-lan.mkiv
 %{_texmfdistdir}/tex/context/base/typo-mar.lua
 %{_texmfdistdir}/tex/context/base/typo-mar.mkiv
 %{_texmfdistdir}/tex/context/base/typo-pag.lua
@@ -1629,15 +1720,31 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/unic-run.mkii
 %{_texmfdistdir}/tex/context/base/util-deb.lua
 %{_texmfdistdir}/tex/context/base/util-dim.lua
+%{_texmfdistdir}/tex/context/base/util-env.lua
 %{_texmfdistdir}/tex/context/base/util-fmt.lua
+%{_texmfdistdir}/tex/context/base/util-jsn.lua
+%{_texmfdistdir}/tex/context/base/util-lib.lua
 %{_texmfdistdir}/tex/context/base/util-lua.lua
 %{_texmfdistdir}/tex/context/base/util-mrg.lua
 %{_texmfdistdir}/tex/context/base/util-pck.lua
 %{_texmfdistdir}/tex/context/base/util-prs.lua
+%{_texmfdistdir}/tex/context/base/util-ran.lua
 %{_texmfdistdir}/tex/context/base/util-seq.lua
+%{_texmfdistdir}/tex/context/base/util-soc.lua
+%{_texmfdistdir}/tex/context/base/util-sql-imp-client.lua
+%{_texmfdistdir}/tex/context/base/util-sql-imp-library.lua
+%{_texmfdistdir}/tex/context/base/util-sql-imp-swiglib.lua
+%{_texmfdistdir}/tex/context/base/util-sql-loggers.lua
+%{_texmfdistdir}/tex/context/base/util-sql-sessions.lua
+%{_texmfdistdir}/tex/context/base/util-sql-tickets.lua
+%{_texmfdistdir}/tex/context/base/util-sql-tracers.lua
+%{_texmfdistdir}/tex/context/base/util-sql-users.lua
+%{_texmfdistdir}/tex/context/base/util-sql.lua
+%{_texmfdistdir}/tex/context/base/util-sta.lua
 %{_texmfdistdir}/tex/context/base/util-sto.lua
 %{_texmfdistdir}/tex/context/base/util-str.lua
 %{_texmfdistdir}/tex/context/base/util-tab.lua
+%{_texmfdistdir}/tex/context/base/util-tpl.lua
 %{_texmfdistdir}/tex/context/base/verb-c.mkii
 %{_texmfdistdir}/tex/context/base/verb-eif.mkii
 %{_texmfdistdir}/tex/context/base/verb-ini.mkii
@@ -1727,7 +1834,9 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/base/x-set-12.mkiv
 %{_texmfdistdir}/tex/context/base/x-sm2om.xsl
 %{_texmfdistdir}/tex/context/base/x-steps.mkii
+%{_texmfdistdir}/tex/context/base/x-steps.mkiv
 %{_texmfdistdir}/tex/context/base/x-udhr.mkiv
+%{_texmfdistdir}/tex/context/base/x-xfdf.mkiv
 %{_texmfdistdir}/tex/context/base/x-xml-01.mkii
 %{_texmfdistdir}/tex/context/base/x-xml-02.mkii
 %{_texmfdistdir}/tex/context/base/x-xml-11.mkii
@@ -1780,14 +1889,8 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/bib/bibl-num.tex
 %{_texmfdistdir}/tex/context/bib/bibl-ssa.tex
 %{_texmfdistdir}/tex/context/bib/sample.bib
-%{_texmfdistdir}/tex/context/colors/icc/colorprofiles.lua
-%{_texmfdistdir}/tex/context/colors/icc/colorprofiles.xml
-%{_texmfdistdir}/tex/context/config/cont-de.ini
-%{_texmfdistdir}/tex/context/config/cont-en.ini
-%{_texmfdistdir}/tex/context/config/cont-fr.ini
-%{_texmfdistdir}/tex/context/config/cont-it.ini
-%{_texmfdistdir}/tex/context/config/cont-nl.ini
-%{_texmfdistdir}/tex/context/config/cont-ro.ini
+%{_texmfdistdir}/tex/context/colors/icc/context/colorprofiles.lua
+%{_texmfdistdir}/tex/context/colors/icc/context/colorprofiles.xml
 %{_texmfdistdir}/tex/context/extra/mag-0000.tex
 %{_texmfdistdir}/tex/context/extra/setup-qr.tex
 %{_texmfdistdir}/tex/context/extra/showunic.tex
@@ -1795,6 +1898,8 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/fonts/antykwapoltawskiego.lfg
 %{_texmfdistdir}/tex/context/fonts/asana-math.lfg
 %{_texmfdistdir}/tex/context/fonts/cambria-math.lfg
+%{_texmfdistdir}/tex/context/fonts/cc-icons.lfg
+%{_texmfdistdir}/tex/context/fonts/ccicons.lfg
 %{_texmfdistdir}/tex/context/fonts/charter-math.lfg
 %{_texmfdistdir}/tex/context/fonts/demo.lfg
 %{_texmfdistdir}/tex/context/fonts/dingbats.lfg
@@ -1810,6 +1915,8 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/fonts/mathtimes-math.lfg
 %{_texmfdistdir}/tex/context/fonts/px-math.lfg
 %{_texmfdistdir}/tex/context/fonts/symbol-math.lfg
+%{_texmfdistdir}/tex/context/fonts/texgyre.lfg
+%{_texmfdistdir}/tex/context/fonts/treatments.lfg
 %{_texmfdistdir}/tex/context/fonts/tx-math.lfg
 %{_texmfdistdir}/tex/context/fonts/utopia-math.lfg
 %{_texmfdistdir}/tex/context/fonts/xits-math.lfg
@@ -2001,6 +2108,10 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/patterns/lang-sv.lua
 %{_texmfdistdir}/tex/context/patterns/lang-sv.pat
 %{_texmfdistdir}/tex/context/patterns/lang-sv.rme
+%{_texmfdistdir}/tex/context/patterns/lang-th.hyp
+%{_texmfdistdir}/tex/context/patterns/lang-th.lua
+%{_texmfdistdir}/tex/context/patterns/lang-th.pat
+%{_texmfdistdir}/tex/context/patterns/lang-th.rme
 %{_texmfdistdir}/tex/context/patterns/lang-tk.hyp
 %{_texmfdistdir}/tex/context/patterns/lang-tk.lua
 %{_texmfdistdir}/tex/context/patterns/lang-tk.pat
@@ -2024,6 +2135,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/sample/aesop-de.tex
 %{_texmfdistdir}/tex/context/sample/bryson.tex
 %{_texmfdistdir}/tex/context/sample/cow.pdf
+%{_texmfdistdir}/tex/context/sample/d-res-01.xml
 %{_texmfdistdir}/tex/context/sample/davis.tex
 %{_texmfdistdir}/tex/context/sample/dawkins.tex
 %{_texmfdistdir}/tex/context/sample/demo-mps.tex
@@ -2036,6 +2148,7 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/sample/khatt-en.tex
 %{_texmfdistdir}/tex/context/sample/knuth.tex
 %{_texmfdistdir}/tex/context/sample/linden.tex
+%{_texmfdistdir}/tex/context/sample/lorem.tex
 %{_texmfdistdir}/tex/context/sample/materie.tex
 %{_texmfdistdir}/tex/context/sample/mill.png
 %{_texmfdistdir}/tex/context/sample/montgomery.tex
@@ -2072,12 +2185,20 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-fonts-tfm.lua
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-fonts.lua
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-fonts.tex
+%{_texmfdistdir}/tex/generic/context/luatex/luatex-languages.lua
+%{_texmfdistdir}/tex/generic/context/luatex/luatex-languages.tex
+%{_texmfdistdir}/tex/generic/context/luatex/luatex-math.lua
+%{_texmfdistdir}/tex/generic/context/luatex/luatex-math.tex
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-mplib.lua
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-mplib.tex
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-plain.tex
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-preprocessor-test.tex
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-preprocessor.lua
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-preprocessor.tex
+%{_texmfdistdir}/tex/generic/context/luatex/luatex-swiglib-test.lua
+%{_texmfdistdir}/tex/generic/context/luatex/luatex-swiglib-test.tex
+%{_texmfdistdir}/tex/generic/context/luatex/luatex-swiglib.lua
+%{_texmfdistdir}/tex/generic/context/luatex/luatex-swiglib.tex
 %{_texmfdistdir}/tex/generic/context/luatex/luatex-test.tex
 %{_texmfdistdir}/tex/generic/context/ppchtex/m-ch-de.tex
 %{_texmfdistdir}/tex/generic/context/ppchtex/m-ch-en.tex
@@ -2087,243 +2208,219 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/latex/context/ppchtex/m-ch-en.sty
 %{_texmfdistdir}/tex/latex/context/ppchtex/m-ch-nl.sty
 %{_texmfdistdir}/tex/latex/context/ppchtex/m-pictex.sty
-%{_texmfdistdir}/tex/mptopdf/config/mptopdf.ini
 %_texmf_fmtutil_d/context
-%doc %{_texmfdistdir}/doc/context/bib/bibmod-doc.pdf
-%doc %{_texmfdistdir}/doc/context/bib/bibmod-doc.tex
 %doc %{_texmfdistdir}/doc/context/document/general/manuals/mreadme.pdf
 %doc %{_texmfdistdir}/doc/context/document/general/manuals/tiptrick.pdf
 %doc %{_texmfdistdir}/doc/context/manuals/allkind/mcommon.tex
 %doc %{_texmfdistdir}/doc/context/manuals/allkind/mreadme.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/COPYING
-%doc %{_texmfdistdir}/doc/context/manuals/reference/README
-%doc %{_texmfdistdir}/doc/context/manuals/reference/TODO
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/Makefile
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/1x2xConference.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/1x2xConference.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/1x4.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/1x4.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/1x4xConference.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/1x4xConference.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/1x8.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/1x8.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2DOWN.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2DOWN.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2SIDE.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2SIDE.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2TOP.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2TOP.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2TOPSIDE.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2TOPSIDE.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2UP.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2UP.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x16.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x16.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x2.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x2.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x2x2.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x2x2.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x2x3.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x2x3.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x2x4.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x2x4.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x4.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x4.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x4x2-D.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x4x2-D.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x4x2.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x4x2.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x6xZ-HOR.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x6xZ-HOR.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x6xZ.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x6xZ.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x8-VER.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x8-VER.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x8.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x8.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x8xZ.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2x8xZ.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2xx.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2xx2.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/2xx2.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/3SIDE.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/3SIDE.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Doublewindow.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Doublewindow.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Mapflyer-12.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Mapflyer-12.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Tryptichon.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Tryptichon.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/XY.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/XY.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Zflyer-10.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Zflyer-10.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Zflyer-12.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Zflyer-12.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Zflyer-8.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/Zflyer-8.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/figures-base-file.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/test-arranging.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/arranging/test-arranging.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-backgrounds.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-blocks.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-colors.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-columns.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-descriptions.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-documents.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-figures.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-fonts.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-fonts.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-formulas.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-frames.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-interactive.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-introduction.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-language.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-layers.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-layout.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-metapost.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-modules.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-pagedesign.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-pagedesign.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-preface.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-references.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-tables.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-tabulate.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-textelements.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-typography.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-typography.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/co-verbatim.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/colbaltest.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-000.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-000.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-001.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-001.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-002.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-002.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-003.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-003.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-004.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-004.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-005.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-005.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-006.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-006.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-007.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-007.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-101.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-101.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-102.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-102.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-103.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-103.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-200.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-200.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-201.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-201.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-202.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-202.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-203.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-203.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-204.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-204.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-205.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-205.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-206.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-206.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-301.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-301.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-401.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-401.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-402.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-402.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-403.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-403.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-404.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-404.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-405.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-405.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-406.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-406.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-407.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-407.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-501.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-501.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-701.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-701.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-702.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-702.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-703.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-703.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-704.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-704.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-801.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-801.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-802.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-802.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-803.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-803.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-804.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-804.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-805.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-805.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-806.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cols-806.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/columns.rb
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/columns/cow.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/cont-en.xml
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/cont-xx.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/cont-yy.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/cont-zz.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/contextref-env.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/contextref.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/contextref.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/fonts/demofont.afm
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/fonts/demofont.dat
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/fonts/demofont.map
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/fonts/demofont.pfb
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/fonts/demofont.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/fonts/texnansi-test-test.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-1p.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-1q.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-2p.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-2q.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-3p.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-3q.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-4p.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-4q.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-5p.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-5q.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-6p.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-6q.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-7p.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pagedesign/co-en-7q.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pr-allfiles.lua
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pr-allfiles.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pr-copying.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/pr-texmfstart.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/s-abr-04.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/st-commands.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/st-contents.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/st-definitions.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/st-index.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/tables/registers-buffer.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/texmf.zip
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/typography/encodings.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/typography/encodings.tex
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/typography/glyphs.pdf
-%doc %{_texmfdistdir}/doc/context/manuals/reference/en/typography/glyphs.tex
-%doc %{_texmfdistdir}/doc/context/scripts/perl/texshow.1
-%doc %{_texmfdistdir}/doc/context/scripts/perl/texshow.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/ctxtools.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/ctxtools.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/ctxtools.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/imgtopdf.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/imgtopdf.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/imgtopdf.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/mptopdf.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/mptopdf.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/pdftools.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/pdftools.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/pdftools.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/pstopdf.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/pstopdf.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/pstopdf.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/rlxtools.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/rlxtools.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/rlxtools.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/texexec.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/texexec.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/texexec.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/texmfstart.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/texmfstart.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/texmfstart.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/textools.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/textools.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/textools.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/texutil.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/texutil.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/texutil.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/tmftools.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/tmftools.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/tmftools.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/xmltools.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/xmltools.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkii/xmltools.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/context.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/context.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/context.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/luatools.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/luatools.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/luatools.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-babel.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-babel.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-babel.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-base.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-base.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-base.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-cache.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-cache.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-cache.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-chars.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-chars.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-chars.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-check.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-check.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-check.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-colors.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-colors.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-colors.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-context.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-context.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-context.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-epub.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-epub.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-epub.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-fcd.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-fcd.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-fcd.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-flac.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-flac.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-flac.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-fonts.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-fonts.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-fonts.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-grep.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-grep.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-grep.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-interface.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-interface.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-interface.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-metapost.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-metapost.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-metapost.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-metatex.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-metatex.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-metatex.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-modules.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-modules.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-modules.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-package.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-package.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-package.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-patterns.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-patterns.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-patterns.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-pdf.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-pdf.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-pdf.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-plain.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-plain.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-plain.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-profile.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-profile.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-profile.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-rsync.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-rsync.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-rsync.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-scite.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-scite.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-scite.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-server.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-server.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-server.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-texworks.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-texworks.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-texworks.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-timing.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-timing.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-timing.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-tools.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-tools.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-tools.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-unzip.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-unzip.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-unzip.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-update.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-update.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-update.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-watch.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-watch.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtx-watch.xml
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtxrun.html
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtxrun.man
+%doc %{_texmfdistdir}/doc/context/scripts/mkiv/mtxrun.xml
 %doc %{_mandir}/man1/context.1*
-%doc %{_texmfdir}/doc/man/man1/context.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/context.man1.pdf
 %doc %{_mandir}/man1/ctxtools.1*
-%doc %{_texmfdir}/doc/man/man1/ctxtools.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/ctxtools.man1.pdf
+%doc %{_mandir}/man1/luatools.1*
+%doc %{_texmfdistdir}/doc/man/man1/luatools.man1.pdf
+%doc %{_mandir}/man1/mtx-babel.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-babel.man1.pdf
+%doc %{_mandir}/man1/mtx-base.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-base.man1.pdf
+%doc %{_mandir}/man1/mtx-cache.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-cache.man1.pdf
+%doc %{_mandir}/man1/mtx-chars.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-chars.man1.pdf
+%doc %{_mandir}/man1/mtx-check.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-check.man1.pdf
+%doc %{_mandir}/man1/mtx-colors.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-colors.man1.pdf
+%doc %{_mandir}/man1/mtx-context.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-context.man1.pdf
+%doc %{_mandir}/man1/mtx-epub.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-epub.man1.pdf
+%doc %{_mandir}/man1/mtx-fcd.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-fcd.man1.pdf
+%doc %{_mandir}/man1/mtx-flac.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-flac.man1.pdf
+%doc %{_mandir}/man1/mtx-fonts.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-fonts.man1.pdf
+%doc %{_mandir}/man1/mtx-grep.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-grep.man1.pdf
+%doc %{_mandir}/man1/mtx-interface.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-interface.man1.pdf
+%doc %{_mandir}/man1/mtx-metapost.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-metapost.man1.pdf
+%doc %{_mandir}/man1/mtx-metatex.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-metatex.man1.pdf
+%doc %{_mandir}/man1/mtx-modules.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-modules.man1.pdf
+%doc %{_mandir}/man1/mtx-package.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-package.man1.pdf
+%doc %{_mandir}/man1/mtx-patterns.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-patterns.man1.pdf
+%doc %{_mandir}/man1/mtx-pdf.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-pdf.man1.pdf
+%doc %{_mandir}/man1/mtx-plain.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-plain.man1.pdf
+%doc %{_mandir}/man1/mtx-profile.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-profile.man1.pdf
+%doc %{_mandir}/man1/mtx-rsync.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-rsync.man1.pdf
+%doc %{_mandir}/man1/mtx-scite.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-scite.man1.pdf
+%doc %{_mandir}/man1/mtx-server.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-server.man1.pdf
+%doc %{_mandir}/man1/mtx-texworks.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-texworks.man1.pdf
+%doc %{_mandir}/man1/mtx-timing.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-timing.man1.pdf
+%doc %{_mandir}/man1/mtx-tools.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-tools.man1.pdf
+%doc %{_mandir}/man1/mtx-unzip.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-unzip.man1.pdf
+%doc %{_mandir}/man1/mtx-update.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-update.man1.pdf
+%doc %{_mandir}/man1/mtx-watch.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtx-watch.man1.pdf
+%doc %{_mandir}/man1/mtxrun.1*
+%doc %{_texmfdistdir}/doc/man/man1/mtxrun.man1.pdf
 %doc %{_mandir}/man1/pstopdf.1*
-%doc %{_texmfdir}/doc/man/man1/pstopdf.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/pstopdf.man1.pdf
 %doc %{_mandir}/man1/texexec.1*
-%doc %{_texmfdir}/doc/man/man1/texexec.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/texexec.man1.pdf
 %doc %{_mandir}/man1/texmfstart.1*
-%doc %{_texmfdir}/doc/man/man1/texmfstart.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/texmfstart.man1.pdf
 
 #-----------------------------------------------------------------------
 %prep
@@ -2336,18 +2433,18 @@ for a wealth of support information.
 mkdir -p %{buildroot}%{_bindir}
 cp -fpa bin/x86_64-linux/* %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
+cp -fpar texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
-mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
+mv %{buildroot}%{_texmfdistdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_texmf_fmtutil_d}
 cat > %{buildroot}%{_texmf_fmtutil_d}/context <<EOF
 #
 # from context:
-cont-en pdftex cont-usr.tex -8bit *cont-en.ini
-cont-en xetex cont-usr.tex -8bit *cont-en.ini
-#! cont-de pdftex cont-usr.tex -8bit *cont-de.ini
-#! cont-fr pdftex cont-usr.tex -8bit *cont-fr.ini
-#! cont-it pdftex cont-usr.tex -8bit *cont-it.ini
-#! cont-nl pdftex cont-usr.tex -8bit *cont-nl.ini
-#! cont-ro pdftex cont-usr.tex -8bit *cont-ro.ini
+cont-en pdftex cont-usr.tex -8bit *cont-en.mkii
+cont-en xetex cont-usr.tex -8bit *cont-en.mkii
+#! cont-de pdftex cont-usr.tex -8bit *cont-de.mkii
+#! cont-fr pdftex cont-usr.tex -8bit *cont-fr.mkii
+#! cont-it pdftex cont-usr.tex -8bit *cont-it.mkii
+#! cont-nl pdftex cont-usr.tex -8bit *cont-nl.mkii
+#! cont-ro pdftex cont-usr.tex -8bit *cont-ro.mkii
 EOF
