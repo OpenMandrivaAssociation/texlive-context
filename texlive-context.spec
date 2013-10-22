@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-context
 Version:	20130426
-Release:	1
+Release:	2
 Summary:	The ConTeXt macro package
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/context/current
@@ -2430,13 +2430,13 @@ for a wealth of support information.
 %install
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-    ln -sf %{_texmfdir}/scripts/context/stubs/unix/context context
-    ln -sf %{_texmfdir}/scripts/context/stubs/unix/ctxtools ctxtools
-    ln -sf %{_texmfdir}/scripts/context/stubs/unix/luatools luatools
-    ln -sf %{_texmfdir}/scripts/context/stubs/unix/mtxrun mtxrun
-    ln -sf %{_texmfdir}/scripts/context/stubs/unix/pstopdf pstopdf
-    ln -sf %{_texmfdir}/scripts/context/stubs/unix/texexec texexec
-    ln -sf %{_texmfdir}/scripts/context/stubs/unix/texmfstart texmfstart
+    ln -sf %{_texmfdistdir}/scripts/context/stubs/unix/context context
+    ln -sf %{_texmfdistdir}/scripts/context/stubs/unix/ctxtools ctxtools
+    ln -sf %{_texmfdistdir}/scripts/context/stubs/unix/luatools luatools
+    ln -sf %{_texmfdistdir}/scripts/context/stubs/unix/mtxrun mtxrun
+    ln -sf %{_texmfdistdir}/scripts/context/stubs/unix/pstopdf pstopdf
+    ln -sf %{_texmfdistdir}/scripts/context/stubs/unix/texexec texexec
+    ln -sf %{_texmfdistdir}/scripts/context/stubs/unix/texmfstart texmfstart
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
