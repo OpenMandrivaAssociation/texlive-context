@@ -13,7 +13,6 @@ URL:		http://www.ctan.org/tex-archive/macros/context/current
 License:	OTHER-FREE
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.x86_64-linux.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -2424,14 +2423,21 @@ for a wealth of support information.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a0 -a1
 
 %build
 
 %install
-# only lua scripts
 mkdir -p %{buildroot}%{_bindir}
-cp -fpa bin/x86_64-linux/* %{buildroot}%{_bindir}
+pushd %{buildroot}%{_bindir}
+    ln -sf %{_texmfdir}/scripts/context/stubs/unix/context context
+    ln -sf %{_texmfdir}/scripts/context/stubs/unix/ctxtools ctxtools
+    ln -sf %{_texmfdir}/scripts/context/stubs/unix/luatools luatools
+    ln -sf %{_texmfdir}/scripts/context/stubs/unix/mtxrun mtxrun
+    ln -sf %{_texmfdir}/scripts/context/stubs/unix/pstopdf pstopdf
+    ln -sf %{_texmfdir}/scripts/context/stubs/unix/texexec texexec
+    ln -sf %{_texmfdir}/scripts/context/stubs/unix/texmfstart texmfstart
+popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
