@@ -1,4 +1,4 @@
-# revision 31080
+# revision 32605
 # category Package
 # catalog-ctan /macros/context/current
 # catalog-date 2013-04-26 00:38:23 +0200
@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-context
 Version:	20130426
-Release:	6
+Release:	7
 Summary:	The ConTeXt macro package
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/context/current
@@ -303,6 +303,7 @@ for a wealth of support information.
 %{_texmfdistdir}/scripts/context/ruby/texutil.rb
 %{_texmfdistdir}/scripts/context/ruby/tmftools.rb
 %{_texmfdistdir}/scripts/context/ruby/xmltools.rb
+%if 0
 %{_texmfdistdir}/scripts/context/stubs/mswin/context.exe
 %{_texmfdistdir}/scripts/context/stubs/mswin/ctxtools.exe
 %{_texmfdistdir}/scripts/context/stubs/mswin/luatools.exe
@@ -318,6 +319,7 @@ for a wealth of support information.
 %{_texmfdistdir}/scripts/context/stubs/source/mtxrun_dll.c
 %{_texmfdistdir}/scripts/context/stubs/source/mtxrun_exe.c
 %{_texmfdistdir}/scripts/context/stubs/source/readme.txt
+%endif
 %{_texmfdistdir}/scripts/context/stubs/unix/context
 %{_texmfdistdir}/scripts/context/stubs/unix/ctxtools
 %{_texmfdistdir}/scripts/context/stubs/unix/luatools
@@ -1899,10 +1901,8 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/fonts/cambria-math.lfg
 %{_texmfdistdir}/tex/context/fonts/cc-icons.lfg
 %{_texmfdistdir}/tex/context/fonts/ccicons.lfg
-%{_texmfdistdir}/tex/context/fonts/charter-math.lfg
 %{_texmfdistdir}/tex/context/fonts/demo.lfg
 %{_texmfdistdir}/tex/context/fonts/dingbats.lfg
-%{_texmfdistdir}/tex/context/fonts/garamond-math.lfg
 %{_texmfdistdir}/tex/context/fonts/husayni.lfg
 %{_texmfdistdir}/tex/context/fonts/hvmath-math.lfg
 %{_texmfdistdir}/tex/context/fonts/informal-math.lfg
@@ -1912,12 +1912,17 @@ for a wealth of support information.
 %{_texmfdistdir}/tex/context/fonts/lucida-opentype-math.lfg
 %{_texmfdistdir}/tex/context/fonts/lucida-typeone-math.lfg
 %{_texmfdistdir}/tex/context/fonts/mathtimes-math.lfg
+%{_texmfdistdir}/tex/context/fonts/mdbch-math.lfg
+%{_texmfdistdir}/tex/context/fonts/mdici-math.lfg
+%{_texmfdistdir}/tex/context/fonts/mdpgd-math.lfg
+%{_texmfdistdir}/tex/context/fonts/mdpus-math.lfg
+%{_texmfdistdir}/tex/context/fonts/mdput-math.lfg
+%{_texmfdistdir}/tex/context/fonts/mdugm-math.lfg
 %{_texmfdistdir}/tex/context/fonts/px-math.lfg
 %{_texmfdistdir}/tex/context/fonts/symbol-math.lfg
 %{_texmfdistdir}/tex/context/fonts/texgyre.lfg
 %{_texmfdistdir}/tex/context/fonts/treatments.lfg
 %{_texmfdistdir}/tex/context/fonts/tx-math.lfg
-%{_texmfdistdir}/tex/context/fonts/utopia-math.lfg
 %{_texmfdistdir}/tex/context/fonts/xits-math.lfg
 %{_texmfdistdir}/tex/context/foxet/fe-bryson.xml
 %{_texmfdistdir}/tex/context/foxet/fe-ward.xml
@@ -2442,6 +2447,9 @@ mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mv %{buildroot}%{_texmfdistdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
+%if 1
+rm -fr %{buildroot}%{_texmfdistdir}/scripts/context/stubs/{mswin,source}
+%endif
 mkdir -p %{buildroot}%{_texmf_fmtutil_d}
 cat > %{buildroot}%{_texmf_fmtutil_d}/context <<EOF
 #
