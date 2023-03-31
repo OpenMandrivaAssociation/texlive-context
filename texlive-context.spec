@@ -1,6 +1,6 @@
 Name:		texlive-context
 Version:	58167
-Release:	1
+Release:	2
 Summary:	The ConTeXt macro package
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/context/current
