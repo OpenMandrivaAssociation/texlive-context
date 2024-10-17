@@ -3,7 +3,7 @@ Version:	58167
 Release:	2
 Summary:	The ConTeXt macro package
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/context/current
+URL:		https://www.ctan.org/tex-archive/macros/context/current
 License:	OTHER-FREE
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/context.doc.r%{version}.tar.xz
