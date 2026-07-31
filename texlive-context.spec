@@ -1,9 +1,9 @@
 %global tl_name context
-%global tl_revision 79618
+%global tl_revision 79834
 
 Name:		texlive-%{tl_name}
 Epoch:		1
-Version:	2026~07~06.1329.A
+Version:	2026~07~29.1146.A
 Release:	%{tl_revision}.1
 Summary:	The ConTeXt macro package
 Group:		Publishing
